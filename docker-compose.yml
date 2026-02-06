@@ -2,7 +2,7 @@ version: '3'
 services:
   openclaw2:
     image: alpine/openclaw:latest
-    network_mode: "host" # 直接共享宿主机网络栈
+    network_mode: "host" # 直接共享宿主机网络栈，需要先打开docker desktop settings->Resources->Enable host networking
     user: "root"
     environment:
       OPENCLAW_GATEWAY_TOKEN: cbde0583dcb0559d6a14df8bb501ff5d5314f1a0948c2aec
