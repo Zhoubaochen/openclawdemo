@@ -1,0 +1,102 @@
+{
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "restart": true,
+    "native": "auto",
+    "nativeSkills": "auto"
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+		"ollama":{
+			"apiKey":"123",
+			"baseUrl":"http://127.0.0.1:11434/v1/",
+			"api": "openai-completions",
+			"models": [
+			{
+            "id": "qwen2.5-coder-7b",
+            "name": "qwen2.5-coder-7b",
+            "input": ["text"]
+			}
+			]
+			},
+      "bailian": {
+        "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "apiKey": "sk-your token get from aliyun",
+        "api": "openai-completions",
+       "models": [
+          {
+            "id": "qwen3-max-2025-09-23",
+            "name": "通义千问 Max Thinking 版",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0.0025, "output": 0.01, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 26214,
+           "maxTokens": 6553
+          }
+        ]
+      }
+    }
+  },  "agents": {
+    "defaults": {
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "workspace": "/home/node/workspace",
+      "model": {
+"primary":"ollama/qwen2.5-coder-7b"
+      },
+      "models": {
+"bailian/qwen3-max-2025-09-23": { alias: "通义千问 Max Thinking 版" },"ollama/qwen3:4b": { alias: "通义千问 Max Thinking 版" }
+
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "cbde0583dcb0559d6a14df8bb501ff5d5314f1a0948c2aec"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "84:your telegram botToken"
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-01-31T13:35:39.680Z",
+    "lastRunVersion": "2026.1.29",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.1.29",
+    "lastTouchedAt": "2026-01-31T13:35:39.695Z"
+  }
+}
